@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="create-new">
+    <div class="btn-back-placeholder">
+      <button (click)="goToPage()">
+        <div class="btn-div">
+          <div class="icon-placeholder-button">
+            <img class="ic_backward" src="assets/icons/ic_back.svg" onerror="this.src='assets/placeholders/ic_broken_icon.svg'" alt="Иконка кнопки назад">
+          </div>
+          <div>
+            <span>Назад</span>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div class="div-title">
+      <label for="cityTitle">Название города</label>
+      <input type="text" formControlName="cityTitle" required>
+      <div class="error-div" *ngIf="form.get('cityTitle')?.invalid && form.get('cityTitle')?.touched">
+        *Заполните поле
+      </div>
+    </div>
+    <div class="div-description">
+      <label for="cityDescription">Описание города</label>
+      <textarea formControlName="cityDescription" required></textarea>
+      <div class="error-div" *ngIf="form.get('cityDescription')?.invalid && form.get('cityDescription')?.touched">
+        *Заполните поле
+      </div>
+    </div>
+    <div class="div-link">
+      <label for="cityLink">Ссылка на картинку</label>
+      <input type="text" formControlName="cityLink" required>
+      <div class="error-div" *ngIf="form.get('cityLink')?.invalid && form.get('cityLink')?.touched">
+        *Заполните поле
+      </div>
+    </div>
+    <div class="btn_div-submit">
+      <button class="button-accent" type="submit">Создать</button>
+    </div>
+    <div *ngIf="isLoading" class="loading-spinner create-new__loading-spinner">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</form>

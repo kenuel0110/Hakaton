@@ -1,0 +1,21 @@
+<!--Нав бар-->
+<nav>
+  <div class="logo">
+    <a href="/">
+      <img src="https://mospolytech.ru/local/templates/main/dist/img/logos/mospolytech-logo-white.svg" alt="Logo">
+    </a>
+  </div>
+  <ul class="menu" style="align-self: center;">
+    <li><a href="#">Menu Item 1</a></li>
+    <li><a href="#">Menu Item 2</a></li>
+    <li><a href="#">Menu Item 3</a></li>
+  </ul>
+  <ng-container *ngIf="(isLoggedIn | async) === true">
+    <a href="#" (click)="signOut()"><button class="logout-btn">Выйти</button></a>
+  </ng-container>
+  <ng-container *ngIf="(isLoggedIn | async) === false && currentUrlGetter !== '/auth' && currentUrlGetter !== '/register'">
+    <a href="/auth"><button class="login-btn">Войти</button></a>
+  </ng-container>
+</nav>
+<!--##############-->
+<router-outlet></router-outlet>

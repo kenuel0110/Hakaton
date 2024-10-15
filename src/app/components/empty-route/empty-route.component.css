@@ -1,0 +1,32 @@
+.emptypage{
+  margin: var(--margin-large);
+}
+
+.button-placeholder{
+  margin-top: var(--margin-large);
+}
+
+.ic_backward{
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.icon-placeholder-button{
+  align-items: center !important;
+}
+
+.btn-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-div > div{
+  align-items: center;
+}
+
+.description{
+  color: var(--secondary-text-color);
+}
