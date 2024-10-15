@@ -10,10 +10,13 @@
     </a>
   </div>
   <ul class="menu" style="align-self: center;">
-    <ng-container *ngIf="(isLoggedIn | async) === false && currentUrlGetter !== '/admin'">
-      <li><a href="">Войти</a></li>
-      <li><a href="">Выйти</a></li>
-      <li><a href="">Создать заявку</a></li>
+    <ng-container *ngIf="isLoggedIn === false && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration'">
+      <li><a href="/new">Создать заявку</a></li>
+      <li><a href="/auth">Войти</a></li>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn === true && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration'">
+      <li><a href="/new">Создать заявку</a></li>
+      <li><a (click)="signOut()">Выйти</a></li>
     </ng-container>
   </ul>
 </nav>

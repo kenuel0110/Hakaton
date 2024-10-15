@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
@@ -63,14 +64,10 @@ export class FirebaseAuthService {
     }
   }
 
-  async isLoggedIn(): Promise<boolean> {
-    return new Promise((resolve, reject) => {
+  isLoggedIn(): Observable<boolean> {
+    return new Observable((observer) => {
       onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
+        observer.next(!!user);
       });
     });
   }
