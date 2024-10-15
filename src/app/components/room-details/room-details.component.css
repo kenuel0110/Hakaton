@@ -1,0 +1,43 @@
+.room-details {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.room-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.room-max-count {
+  font-size: 18px;
+  margin: 0;
+}
+
+.room-ar-link {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.room-ar-link a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.room-ar-link i {
+  margin-right: 5px;
+}

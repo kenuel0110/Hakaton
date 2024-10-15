@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Event } from '../../models/event.model';
 import { NotificationService } from '../../services/notification.service';
+import { RoomService, Room } from '../../services/room.service';
 
 @Component({
   selector: 'app-main',
@@ -17,11 +18,19 @@ import { NotificationService } from '../../services/notification.service';
 })
 
 export class MainComponent implements OnInit {
-  //cities: City[] = [];
+  rooms: Room[] = [];
+
   selectedButton: string = 'list';
   isLoading: boolean = true;
 
-  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router) {}
+  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router, private roomService: RoomService) {
+    this.rooms = roomService.getRooms();
+  }
+
+  // Метод для перехода на страницу с информацией о комнате
+  goToRoom(roomId: number) {
+    this.router.navigate(['/main', roomId]);
+  }
 
   ngOnInit(): void {
     this.loadCities();
@@ -39,10 +48,10 @@ export class MainComponent implements OnInit {
     } catch (error: any) {
       console.error(error);
       this.notificationService.showNotification(error);
-    }finally {
+    } finally {
       this.isLoading = false;
     }
-  
+
   }
 
   selectButton(button: string) {

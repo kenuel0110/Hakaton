@@ -1,11 +1,10 @@
-
 <div class="main">
   <div class="menu-bar">
-      <div class="selector-view">
-        <button (click)="selectButton('list')" [class.active]="selectedButton === 'list'">Список</button>
-        <button (click)="selectButton('grid')" [class.active]="selectedButton === 'grid'">Плитка</button>
-      </div>
-      <div class="placeholder-button"><button class="button-accent" (click)="goToPage()">Создать</button></div>
+    <div class="selector-view">
+      <button (click)="selectButton('list')" [class.active]="selectedButton === 'list'">Список</button>
+      <button (click)="selectButton('grid')" [class.active]="selectedButton === 'grid'">Плитка</button>
+    </div>
+    <div class="placeholder-button"><button class="button-accent" (click)="goToPage()">Создать</button></div>
   </div>
   <div class="recycleviews-cities">
     <div *ngIf="isLoading" class="loading-spinner">
@@ -13,45 +12,20 @@
     </div>
     <div *ngIf="!isLoading" [ngSwitch]="selectedButton">
       <div *ngSwitchCase="'list'" class="recycleview-list">
-        <!--<div *ngFor="let city of cities" class="city-item-list">
-          <div class="list-item">
-            <div class="item-img-placeholder">
-              <img [src]="city.image" class="item-list-image" onerror="this.src='assets/placeholders/img_image_missing.jpg'" alt="Фотография города">
+        <div class="rooms-container">
+          <div *ngFor="let room of rooms" class="room-preview">
+            <div class="room-image">
+              <img src="https://screenshots.enkod.tech/ilya_novikovG6KIVEp3v160xCMY.png" alt="{{ room.title }}">
             </div>
-            <div class="city-item-info">
-              <div class="city-item-header">
-                <div>
-                  <span>{{city.name}}</span>
-                </div>
-                <button (click)="toggleFavorite(city)" class="star-checkbox">
-                  <img [src]="city.favorite ? 'assets/icons/ic_star_filled.svg' : 'assets/icons/ic_star_unfilled.svg'" alt="Иконка избраного" onerror="this.src='assets/placeholders/ic_broken_icon.svg'">
-                </button>                
-              </div>
-              <div class="city-item-description">{{city.description}}</div>
-            </div>-->
-          </div>
-        </div>
-      </div>
-      <!--<div *ngSwitchCase="'grid'" class="recycleview-grid">
-        <div *ngFor="let city of cities" class="city-item-grid">
-          <div class="grid-item">
-            <div class="item-img-placeholder-grid">
-              <img [src]="city.image" class="item-grid-image" onerror="this.src='assets/placeholders/img_image_missing.jpg'" alt="Фотография города">
-            </div>
-            <div class="city-item-info-grid">
-              <div class="city-item-header-grid">
-                <div>
-                  <span>{{city.name}}</span>
-                </div>
-                <button (click)="toggleFavorite(city)" [class.filled]="city.favorite" class="star-checkbox">
-                  <img [src]="city.favorite ? 'assets/icons/ic_star_filled.svg' : 'assets/icons/ic_star_unfilled.svg'" alt="Иконка избраного" onerror="this.src='assets/placeholders/ic_broken_icon.svg'">
-                </button>
-              </div>
-              <div class="city-item-description-grid">{{city.description}}</div>
+            <div class="room-info">
+              <h3>{{ room.title }}</h3>
+              <p>Максимальное количество человек: {{ room.max_count }}</p>
+              <button (click)="goToRoom(room.id)">Подробнее</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
+
 </div>

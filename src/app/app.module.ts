@@ -8,6 +8,7 @@ import { EmptyPage } from './components/empty-route/empty-route.component';
 import { environment } from '../../environments/environment';
 import { FirebaseService } from './services/firebase.service';
 
+
 @NgModule({
   declarations: [
     EmptyPage,

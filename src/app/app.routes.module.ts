@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { MainComponent } from './components/main/main.component';
+import { RoomDetailsComponent } from './components/room-details/room-details.component';
 import { CreateNewComponent } from './components/create-new/create-new.component';
 
 import { AuthComponent } from './components/auth/auth.component';
@@ -15,6 +16,7 @@ export const routes: Routes = [
     component: MainComponent,
     data: { title: 'Список городов' }
   },
+  { path: 'main/:id', component: RoomDetailsComponent },
   {
     path: 'new',
     component: CreateNewComponent,
