@@ -1,14 +1,64 @@
-<div class="room-details">
-  <div class="room-header">
-    <h2 class="room-title">{{ room?.title }}</h2>
-    <p class="room-max-count">Максимальное количество человек: {{ room?.max_count }}</p>
+<div class="room__details">
+
+  <div class="room__3d">
+    <iframe title="Studio apartment (vray baked textures included)" frameborder="0" allowfullscreen
+      mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
+      xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
+      src="https://sketchfab.com/models/cae2d96ede1d4112b1fd391099a43f77/embed">;
+    </iframe>
   </div>
 
-  <div class="room-ar-link">
-    <a href="{{ room?.AR_link }}" target="_blank">
-      <i class="fas fa-link"></i>
-      <span>AR-ссылка</span>
-    </a>
-  </div>
+  <form (ngSubmit)="onSubmit()" class="room__info">
+    <div class="form-group">
+      <label for="owner">Название организации:</label>
+      <input type="text" id="owner" formControlName="owner">
+    </div>
+    <div class="form-group">
+      <label for="title">Название мероприятия:</label>
+      <input type="text" id="title" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="description">Описание мероприятия:</label>
+      <textarea id="description" formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="special_quest">Особые требования:</label>
+      <textarea id="special_quest" formControlName="special_quest"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="equipment">Оборудование:</label>
+      <textarea id="equipment" formControlName="equipment"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="owner_equipment">Оборудование компании:</label>
+      <textarea id="owner_equipment" formControlName="owner_equipment"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="comments">Комментарии:</label>
+      <textarea id="comments" formControlName="comments"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="start_arenda">Начало аренды:</label>
+      <input type="date" id="start_arenda" formControlName="start_arenda">
+    </div>
+    <div class="form-group">
+      <label for="end_arenda">Окончание аренды:</label>
+      <input type="date" id="end_arenda" formControlName="end_arenda">
+    </div>
+    <div class="form-group">
+      <label for="fullname">Полное имя:</label>
+      <input type="text" id="fullname" formControlName="fullname">
+    </div>
+    <div class="form-group">
+      <label for="post">Должность:</label>
+      <input type="text" id="post" formControlName="post">
+    </div>
+    <div class="form-group">
+      <label for="tel">Телефон:</label>
+      <input type="tel" id="tel" formControlName="tel">
+    </div>
+  </form>
+
+  <button type="submit" class="submit-button" (click)="onSubmit()">Отправить</button>
 
 </div>

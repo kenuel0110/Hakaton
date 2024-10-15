@@ -1,60 +1,73 @@
 <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!-- Email input field -->
-    <div class="form-group">
-      <label for="email" class="col-sm-2 control-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" id="email" formControlName="email" placeholder="Введите адрес электронной почты" class="form-control">
-        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
-          <div *ngIf="form.get('email')?.errors?.['required']">Введите адрес электронной почты</div>
-          <div *ngIf="form.get('email')?.errors?.['email']">Введите корректный адрес электронной почты</div>
-        </div>
+  <!-- Email input field -->
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" id="email" formControlName="email" placeholder="Введите адрес электронной почты"
+        class="form-control">
+      <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+        <div *ngIf="form.get('email')?.errors?.['required']">Введите адрес электронной почты</div>
+        <div *ngIf="form.get('email')?.errors?.['email']">Введите корректный адрес электронной почты</div>
       </div>
     </div>
+  </div>
 
-    <!-- full-name -->
-    <div class="form-group">
-      <label for="fullname" class="col-sm-2 control-label">ФИО</label>
-      <div class="col-sm-10">
-        <input type="text" id="fullname" formControlName="fullname" placeholder="Введите ФИО" class="form-control">
-        <div *ngIf="form.get('fullname')?.invalid && form.get('fullname')?.touched" class="error">
-          <div *ngIf="form.get('fullname')?.errors?.['required']">Введите ФИО</div>
-        </div>
+  <!-- full-name -->
+  <div class="form-group">
+    <label for="fullname" class="col-sm-2 control-label">ФИО</label>
+    <div class="col-sm-10">
+      <input type="text" id="fullname" formControlName="fullname" placeholder="Введите ФИО" class="form-control">
+      <div *ngIf="form.get('fullname')?.invalid && form.get('fullname')?.touched" class="error">
+        <div *ngIf="form.get('fullname')?.errors?.['required']">Введите ФИО</div>
       </div>
     </div>
-  
-    <!-- Password input field -->
-    <div class="form-group">
-      <label for="password" class="col-sm-2 control-label">Пароль</label>
-      <div class="col-sm-10">
-        <input type="password" id="password" formControlName="password" placeholder="Введите пароль" class="form-control">
-        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
-          <div *ngIf="form.get('password')?.errors?.['required']">Введите пароль</div>
-        </div>
+  </div>
+
+  <!-- owner -->
+  <div class="form-group">
+    <label for="owner" class="col-sm-2 control-label">Название организации</label>
+    <div class="col-sm-10">
+      <input type="text" id="owner" formControlName="owner" placeholder="Введите название организации" class="form-control">
+      <div *ngIf="form.get('owner')?.invalid && form.get('owner')?.touched" class="error">
+        <div *ngIf="form.get('owner')?.errors?.['required']">Введите название организации</div>
       </div>
     </div>
-  
-    <!-- Confirm password input field -->
-    <div class="form-group">
-        <label for="confirmPassword" class="col-sm-2 control-label">Подтвердите пароль</label>
-        <div class="col-sm-10">
-        <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Подтвердите пароль" class="form-control">
-        <div *ngIf="form.invalid && form.touched" class="error">
-            <div *ngIf="form.errors?.['mustMatch']">Пароли не совпадают</div>
-        </div>
-        </div>
-    </div>
-  
-    <!-- Submit button -->
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  </div>
+
+  <!-- Password input field -->
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Пароль</label>
+    <div class="col-sm-10">
+      <input type="password" id="password" formControlName="password" placeholder="Введите пароль" class="form-control">
+      <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
+        <div *ngIf="form.get('password')?.errors?.['required']">Введите пароль</div>
       </div>
     </div>
-  
-    <!-- Already have an account link -->
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <a routerLink="/auth">Уже есть аккаунт?</a>
+  </div>
+
+  <!-- Confirm password input field -->
+  <div class="form-group">
+    <label for="confirmPassword" class="col-sm-2 control-label">Подтвердите пароль</label>
+    <div class="col-sm-10">
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" placeholder="Подтвердите пароль"
+        class="form-control">
+      <div *ngIf="form.invalid && form.touched" class="error">
+        <div *ngIf="form.errors?.['mustMatch']">Пароли не совпадают</div>
       </div>
     </div>
-  </form>
+  </div>
+
+  <!-- Submit button -->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </div>
+  </div>
+
+  <!-- Already have an account link -->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <a routerLink="/auth">Уже есть аккаунт?</a>
+    </div>
+  </div>
+</form>

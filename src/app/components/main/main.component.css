@@ -225,17 +225,17 @@
   height: 16px;
 }
 
-.room-preview {
+/* .room-preview {
   display: flex;
   margin-bottom: 1%;
 }
 
 .room-image {
-  height: auto;
+  width: 30%;
 }
 
 .room-image img {
-  width: 70%;
+  width: 100%;
   border-radius: 10px;
 }
 .room-info {
@@ -256,4 +256,4 @@
   font-size: 1.3vw;
   height: 5%;
   padding: 8%;
-}
+} */

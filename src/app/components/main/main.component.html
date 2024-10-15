@@ -1,17 +1,10 @@
 <div class="main">
-  <div class="menu-bar">
-    <div class="selector-view">
-      <button (click)="selectButton('list')" [class.active]="selectedButton === 'list'">Список</button>
-      <button (click)="selectButton('grid')" [class.active]="selectedButton === 'grid'">Плитка</button>
-    </div>
-    <div class="placeholder-button"><button class="button-accent" (click)="goToPage()">Создать</button></div>
-  </div>
   <div class="recycleviews-cities">
     <div *ngIf="isLoading" class="loading-spinner">
       <div class="spinner"></div>
     </div>
     <div *ngIf="!isLoading" [ngSwitch]="selectedButton">
-      <div *ngSwitchCase="'list'" class="recycleview-list">
+      <div *ngSwitchCase="'grid'" class="recycleview-grid">
         <div class="rooms-container">
           <div *ngFor="let room of rooms" class="room-preview">
             <div class="room-image">

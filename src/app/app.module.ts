@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routes.module';
 import { EmptyPage } from './components/empty-route/empty-route.component';
 import { environment } from '../../environments/environment';
 import { FirebaseService } from './services/firebase.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { FirebaseService } from './services/firebase.service';
     EmptyPage,
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,

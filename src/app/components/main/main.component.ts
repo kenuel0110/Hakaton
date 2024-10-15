@@ -20,7 +20,7 @@ import { RoomService, Room } from '../../services/room.service';
 export class MainComponent implements OnInit {
   rooms: Room[] = [];
 
-  selectedButton: string = 'list';
+  selectedButton: string = 'grid';
   isLoading: boolean = true;
 
   constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router, private roomService: RoomService) {
