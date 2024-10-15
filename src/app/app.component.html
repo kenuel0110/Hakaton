@@ -10,15 +10,15 @@
     </a>
   </div>
   <ul class="menu" style="align-self: center;">
-    <ng-container *ngIf="isLoggedIn && role !== 'admin' && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration'">
+    <ng-container *ngIf="isLoggedIn && role !== 'admin' && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration' && currentUrlGetter !== '/new'">
       <li><a href="/new">Создать заявку</a></li>
       <li><a (click)="signOut()">Выйти</a></li>
     </ng-container>
-    <ng-container *ngIf="isLoggedIn && role === 'admin' && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration'">
+    <ng-container *ngIf="isLoggedIn && role === 'admin' && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration' && currentUrlGetter !== '/new'">
       <!-- hide the "Создать заявку" link for non-admin users -->
       <li><a (click)="signOut()">Выйти</a></li>
     </ng-container>
-    <ng-container *ngIf="!isLoggedIn && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration'">
+    <ng-container *ngIf="!isLoggedIn && currentUrlGetter !== '/auth' && currentUrlGetter !== '/registration' && currentUrlGetter !== '/new'">
       <li><a [href]="isLoggedIn ? '/new' : '/auth'">Создать заявку</a></li>
       <li><a href="/auth">Войти</a></li>
     </ng-container>
