@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Event } from '../../models/event.model';
+import { User } from '../../models/user.model';
 import { NotificationService } from '../../services/notification.service';
 import { RoomService, Room } from '../../services/room.service';
 
