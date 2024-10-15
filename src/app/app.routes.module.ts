@@ -17,6 +17,8 @@ export const routes: Routes = [
     data: { title: 'Список городов' }
   },
   { path: 'main/:id', component: RoomDetailsComponent },
+  { path: 'auth', component: AuthComponent },
+  { path: 'registration', component: RegisterComponent },
   {
     path: 'new',
     component: CreateNewComponent,

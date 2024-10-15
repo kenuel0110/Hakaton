@@ -52,10 +52,9 @@
   height: 100px;
 }
 
-.submit-button {
+.submit-button, .back-button {
   padding: 0 5% 0 5%;
   margin: 2% 0 2% 0;
-  margin-left: 50%;
   cursor: pointer;
 }
 

@@ -36,23 +36,20 @@ export class RoomDetailsComponent implements OnInit {
       post: ['', Validators.required],
       tel: ['', Validators.required],
     });
+    this.form.updateValueAndValidity();
   }
 
   onSubmit() {
     if (this.form.valid) {
-
       const formData = this.form.value;
-
-      console.log(formData); // Временная проверка
-
-      // Очистите форму
+      console.log(formData); // Temporary check
       this.form.reset();
     } else {
       console.log('Форма не валидна');
     }
   }
 
-  openArPage() {
-    this.router.navigate(['/ar']);  // Переход на маршрут 'ar'
+  goBackPage() {
+    this.router.navigate(['/main']);  // Переход на маршрут 'ar'
   }
 }
