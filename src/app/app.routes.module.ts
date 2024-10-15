@@ -21,14 +21,14 @@ export const routes: Routes = [
     data: { title: 'Создание города' }
   },
   {
-    path: 'auth',
+    path: 'admin',
     component: AuthComponent,
-    data: { title: 'Войти' }
+    data: { title: 'Панель администрация' }
   },
   {
-    path: 'register',
-    component: RegisterComponent,
-    data: { title: 'Регистрация' }
+    path: 'choose-room',
+    component: AuthComponent,
+    data: { title: 'Выбор зала' }
   },
   {
     path: 'email-check',

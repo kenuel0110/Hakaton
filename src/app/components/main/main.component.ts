@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { User } from '../../models/user.model';
+import { Event } from '../../models/event.model';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
     this.selectedButton = button;
   }
 
-  async toggleFavorite(city: User) {
+  async toggleFavorite(city: Event) {
     //city.favorite = !city.favorite;
     //if (city.id != undefined) {
     //  try {
