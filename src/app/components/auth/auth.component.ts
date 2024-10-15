@@ -36,6 +36,7 @@ export class AuthComponent implements OnInit {
             this.firebaseAuthService.isEmailVerified().then((isVerified) => {
               if (isVerified) {
                 this.router.navigate(['/']);
+                this.notificationService.showNotification('Вы вошли в аккаунт');
               } else {
                 this.notificationService.showNotification('Пожалуйста, подтвердите свой адрес электронной почты.');
                 this.firebaseAuthService.signOut();

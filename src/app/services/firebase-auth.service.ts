@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { FirebaseService } from './firebase.service';
+import { User } from '../models/user.model';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged } from 'firebase/auth';
 
 @Injectable({
@@ -8,7 +10,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, se
 })
 export class FirebaseAuthService {
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: Auth, private firebaseService: FirebaseService) { }
 
   async createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
     try {
@@ -64,11 +66,22 @@ export class FirebaseAuthService {
     }
   }
 
-  isLoggedIn(): Observable<boolean> {
+  isLoggedIn(): Observable<{ role: string, loggedIn: boolean }> {
     return new Observable((observer) => {
-      onAuthStateChanged(this.auth, (user) => {
-        observer.next(!!user);
+      onAuthStateChanged(this.auth, async (user) => {
+        if (user) {
+          const userData = await this.getUserData(user.uid);
+          const role = userData.role;
+          observer.next({ role, loggedIn: true });
+        } else {
+          observer.next({ role: '', loggedIn: false }); // return an empty string as default role
+        }
       });
     });
+  }
+
+  private async getUserData(uid: string): Promise<User> {
+    const userData = await this.firebaseService.getData(`users/${uid}`);
+    return userData as User;
   }
 }

@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { NotificationService } from './services/notification.service';
 import { filter } from 'rxjs/operators';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 import { Subscription } from 'rxjs';
@@ -19,10 +20,11 @@ import { Subscription } from 'rxjs';
 export class AppComponent {
 
   title = '';
+  role: string = '';
   isLoggedIn: boolean = false;
   subscription: Subscription;
 
-  constructor(private titleService: Title, private router: Router, private firebaseAuthService: FirebaseAuthService) {
+  constructor(private titleService: Title, private router: Router, private notificationService: NotificationService, private firebaseAuthService: FirebaseAuthService) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(async () => {
@@ -36,8 +38,9 @@ export class AppComponent {
       }
     });
 
-    this.subscription = this.firebaseAuthService.isLoggedIn().subscribe((loggedIn) => {
-      this.isLoggedIn = loggedIn;
+    this.subscription = this.firebaseAuthService.isLoggedIn().subscribe((authState) => {
+      this.isLoggedIn = authState.loggedIn;
+      this.role = authState.role;
     });
   }
 
@@ -48,6 +51,7 @@ export class AppComponent {
   signOut(): void {
     this.firebaseAuthService.signOut();
     this.router.navigate(['/']);
+    this.notificationService.showNotification('Вы вышли из аккаунта');
   }
 
   get currentUrlGetter(): string {
