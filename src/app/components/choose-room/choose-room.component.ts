@@ -9,13 +9,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
-  selector: 'app-create-new',
+  selector: 'app-choose-room',
   standalone: true,
   imports: [FormsModule, CommonModule, ReactiveFormsModule],
-  templateUrl: './create-new.component.html',
-  styleUrls: ['./create-new.component.css']
+  templateUrl: './choose-room.component.html',
+  styleUrls: ['./choose-room.component.css']
 })
-export class CreateNewComponent implements OnInit {
+export class ChooseRoom implements OnInit {
   form: FormGroup;
   isLoading: boolean = false;
 

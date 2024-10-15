@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged } from 'firebase/auth';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseAuthService {
+  private isLoggedInPromise: Promise<boolean>;
+  private authStateSubject: Subject<any> = new Subject();
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: Auth) {
+    this.isLoggedInPromise = new Promise((resolve, reject) => {
+      onAuthStateChanged(this.auth, (user) => {
+        resolve(!!user);
+      });
+    });
+
+    onAuthStateChanged(this.auth, (user) => {
+      this.authStateSubject.next(user);
+    });
+  }
 
   async createUserWithEmailAndPassword(email: string, password: string): Promise<any> {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      console.log('User  created successfully!');
+      console.log('User    created successfully!');
       return userCredential;
     } catch (error) {
       console.error('Error creating user:', error);
@@ -32,7 +45,7 @@ export class FirebaseAuthService {
   async signInWithEmailAndPassword(email: string, password: string): Promise<any> {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
-      console.log('User  signed in successfully!');
+      console.log('User    signed in successfully!');
       return userCredential;
     } catch (error) {
       console.error('Error signing in:', error);
@@ -57,21 +70,17 @@ export class FirebaseAuthService {
   async signOut(): Promise<void> {
     try {
       await signOut(this.auth);
-      console.log('User  signed out successfully!');
+      console.log('User signed out successfully!');
     } catch (error) {
       console.error('Error signing out:', error);
     }
   }
 
   async isLoggedIn(): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+    return this.isLoggedInPromise;
+  }
+
+  authStateChanges(): Observable<any> {
+    return this.authStateSubject.asObservable();
   }
 }

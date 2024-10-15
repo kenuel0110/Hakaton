@@ -42,6 +42,8 @@ export class AppComponent {
 
   signOut(): void {
     this.firebaseAuthService.signOut();
+    this.isLoggedIn = this.firebaseAuthService.isLoggedIn();
+    this.router.navigate([this.router.url]);
   }
 
   get currentUrlGetter(): string {

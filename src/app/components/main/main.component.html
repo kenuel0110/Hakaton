@@ -1,11 +1,14 @@
 
 <div class="main">
   <div class="menu-bar">
+    <ng-container *ngIf="(isLoggedIn | async) === false">
+    </ng-container>
+    <ng-container *ngIf="(isLoggedIn | async) === true">
       <div class="selector-view">
-        <button (click)="selectButton('list')" [class.active]="selectedButton === 'list'">Список</button>
-        <button (click)="selectButton('grid')" [class.active]="selectedButton === 'grid'">Плитка</button>
+        <button (click)="selectButton('list')" [class.active]="selectedButton === 'list'">Заявки</button>
+        <button (click)="selectButton('grid')" [class.active]="selectedButton === 'grid'">Мероприятия</button>
       </div>
-      <div class="placeholder-button"><button class="button-accent" (click)="goToPage()">Создать</button></div>
+    </ng-container>
   </div>
   <div class="recycleviews-cities">
     <div *ngIf="isLoading" class="loading-spinner">

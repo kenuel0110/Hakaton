@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FirebaseAuthService } from '../../services/firebase-auth.service';
 import { Event } from '../../models/event.model';
 import { NotificationService } from '../../services/notification.service';
 
@@ -18,10 +19,13 @@ import { NotificationService } from '../../services/notification.service';
 
 export class MainComponent implements OnInit {
   //cities: City[] = [];
-  selectedButton: string = 'list';
+  selectedButton: string = 'grid';
+  isLoggedIn: Promise<boolean>;
   isLoading: boolean = true;
 
-  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router) {}
+  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router, private firebaseAuthService: FirebaseAuthService) {
+    this.isLoggedIn = this.firebaseAuthService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     this.loadCities();
@@ -60,6 +64,8 @@ export class MainComponent implements OnInit {
     //  }
     //}
   }
+
+  
 
   goToPage(): void {
     this.router.navigate(['/new']);

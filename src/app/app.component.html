@@ -6,8 +6,11 @@
     </a>
   </div>
   <ul class="menu" style="align-self: center;">
-    <ng-container *ngIf="(isLoggedIn | async) === false && currentUrlGetter !== '/admin'">
-      <li><a href="">Создать заявку</a></li>
+    <ng-container *ngIf="(isLoggedIn | async) === false && currentUrlGetter !== '/admin' && currentUrlGetter !== '/choose-room'">
+      <li><a href="/choose-room">Создать заявку</a></li>
+    </ng-container>
+    <ng-container *ngIf="(isLoggedIn | async) === true && currentUrlGetter !== '/admin' && currentUrlGetter !== '/choose-room'">
+      <li><a (click)="signOut()">Выйти</a></li>
     </ng-container>
   </ul>
 </nav>

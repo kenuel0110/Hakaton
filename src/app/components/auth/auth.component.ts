@@ -33,14 +33,8 @@ export class AuthComponent implements OnInit {
       this.firebaseAuthService.signInWithEmailAndPassword(this.form.get('email')?.value, this.form.get('password')?.value)
         .then((userCredential) => {
           if (userCredential) {
-            this.firebaseAuthService.isEmailVerified().then((isVerified) => {
-              if (isVerified) {
-                this.router.navigate(['/']);
-              } else {
-                this.notificationService.showNotification('Пожалуйста, подтвердите свой адрес электронной почты.');
-                this.firebaseAuthService.signOut();
-              }
-            });
+            this.router.navigate(['/']);
+            this.notificationService.showNotification('Вход выполнен');
           } else {
             this.notificationService.showNotification('Ошибка входа');
           }
