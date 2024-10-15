@@ -22,7 +22,7 @@ export const routes: Routes = [
   {
     path: 'new',
     component: CreateNewComponent,
-    data: { title: 'Создание города' }
+    data: { title: 'Выбор помещения' }
   },
   {
     path: 'admin',
