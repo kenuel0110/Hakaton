@@ -23,7 +23,7 @@ export interface Room {
     AR_link: string;
 }
 
-export interface Request {
+export interface Event {
     id: number;
     owner: string;
     title: string;
