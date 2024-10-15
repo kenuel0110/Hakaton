@@ -8,7 +8,8 @@
     </button>
   </div>
   <div class="main__sort">
-    <img class="sort__back" src="/public/assets/svgs/arrow.svg" alt="">
+    <img class="sort__back" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
+
     <div class="sort__categories">
       <div class="categories__item categories__all">Все</div>
       <div class="categories__item">Категория 1</div>
@@ -17,7 +18,7 @@
       <div class="categories__item">Категория 4</div>
       <div class="categories__item">Категория 5</div>
     </div>
-    <img class="sort__next" src="/public/assets/svgs/arrow.svg" alt="">
+    <img class="sort__next" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
   </div>
   <div class="recycleviews-cities">
     <div *ngIf="isLoading" class="loading-spinner">
@@ -27,9 +28,6 @@
       <div *ngSwitchCase="'grid'" class="recycleview-grid">
         <div class="rooms-container">
           <div *ngFor="let room of rooms" class="room-preview">
-            <div class="room-image">
-              <img src="https://screenshots.enkod.tech/ilya_novikovG6KIVEp3v160xCMY.png" alt="{{ room.title }}">
-            </div>
             <div class="room-info">
               <h3>{{ room.title }}</h3>
               <p>Максимальное количество человек: {{ room.max_count }}</p>
