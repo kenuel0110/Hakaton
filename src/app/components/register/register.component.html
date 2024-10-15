@@ -10,6 +10,17 @@
         </div>
       </div>
     </div>
+
+    <!-- full-name -->
+    <div class="form-group">
+      <label for="fullname" class="col-sm-2 control-label">ФИО</label>
+      <div class="col-sm-10">
+        <input type="text" id="fullname" formControlName="fullname" placeholder="Введите ФИО" class="form-control">
+        <div *ngIf="form.get('fullname')?.invalid && form.get('fullname')?.touched" class="error">
+          <div *ngIf="form.get('fullname')?.errors?.['required']">Введите ФИО</div>
+        </div>
+      </div>
+    </div>
   
     <!-- Password input field -->
     <div class="form-group">

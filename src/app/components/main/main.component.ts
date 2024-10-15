@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { City } from '../../models/city.model';
+import { User } from '../../models/user.model';
 import { NotificationService } from '../../services/notification.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 
 export class MainComponent implements OnInit {
-  cities: City[] = [];
+  //cities: City[] = [];
   selectedButton: string = 'list';
   isLoading: boolean = true;
 
@@ -31,7 +31,7 @@ export class MainComponent implements OnInit {
     try {
       const data = await this.firebaseService.getData('cities');
       if (data) {
-        this.cities = data;
+        //this.cities = data;
       } else {
         console.log("Данные не найдены");
         this.notificationService.showNotification("Данные не найдены");
@@ -49,16 +49,16 @@ export class MainComponent implements OnInit {
     this.selectedButton = button;
   }
 
-  async toggleFavorite(city: City) {
-    city.favorite = !city.favorite;
-    if (city.id != undefined) {
-      try {
-        await this.firebaseService.update(`cities/${city.id}`, { favorite: city.favorite });
-      } catch (error) {
-        console.error("Ошибка при обновлении избранного:", error);
-        city.favorite = !city.favorite;
-      }
-    }
+  async toggleFavorite(city: User) {
+    //city.favorite = !city.favorite;
+    //if (city.id != undefined) {
+    //  try {
+    //    await this.firebaseService.update(`cities/${city.id}`, { favorite: city.favorite });
+    //  } catch (error) {
+    //    console.error("Ошибка при обновлении избранного:", error);
+    //    city.favorite = !city.favorite;
+    //  }
+    //}
   }
 
   goToPage(): void {

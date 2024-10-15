@@ -3,7 +3,7 @@ import { OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { City } from '../../models/city.model';
+import { Event } from '../../models/event.model';
 import { NotificationService } from '../../services/notification.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
@@ -39,14 +39,14 @@ export class CreateNewComponent implements OnInit {
 
     this.firebaseService.getData('cities').then((cities) => {
       const newCityId = cities ? cities.length : 0;
-      const city: City = {
+      /*const city: Event = {
         id: newCityId,
         name: this.form.get('cityTitle')?.value,
         description: this.form.get('cityDescription')?.value,
         image: this.form.get('cityLink')?.value,
         favorite: false
-      };
-      this.firebaseService.writeData('cities/' + newCityId, city).then(() => {
+      };*/
+      this.firebaseService.writeData('cities/' + newCityId, Event).then(() => {
         this.notificationService.showNotification("Город добавлен");
         this.router.navigate(['/']);
       }).catch((error) => {
