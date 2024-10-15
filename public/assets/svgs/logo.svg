@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="60" height="32" viewBox="0 0 60 32" fill="none" stroke="none" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient_1" gradientUnits="userSpaceOnUse" x1="12.389" y1="0" x2="12.389" y2="22">
+      <stop offset="0" stop-color="#E30E42" />
+      <stop offset="1" stop-color="#E64B0E" />
+    </linearGradient>
+  </defs>
+  <g id="Group" transform="translate(5 5)">
+    <path id="Path" d="M0 22L24.7788 0" style="fill:none;stroke-width:10;stroke:url(#gradient_1);stroke-linecap:round;mix-blend-mode:normal;" />
+    <path id="Path" d="M0 0L24.7788 22" style="fill:none;stroke-width:10;stroke:url(#gradient_1);stroke-linecap:round;mix-blend-mode:normal;" transform="translate(25.221 0)" />
+  </g>
+</svg>

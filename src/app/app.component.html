@@ -1,12 +1,18 @@
 <!--Нав бар-->
-<nav>
+<nav class="nav">
   <div class="logo">
-    <a href="/">
-      <img src="https://mospolytech.ru/local/templates/main/dist/img/logos/mospolytech-logo-white.svg" alt="Logo">
+    <a class="logo--a" href="/">
+      <img class="logo--img" src="../assets/svgs/logo.svg" alt="Logo">
+      <div class="logo--text">собиратор</div>
+    </a>
+    <a class="logo--a youthLogo" href="/">
+      <img class="logo--img" src="../assets/svgs/youthLogo.svg" alt="Logo">
     </a>
   </div>
   <ul class="menu" style="align-self: center;">
     <ng-container *ngIf="(isLoggedIn | async) === false && currentUrlGetter !== '/admin'">
+      <li><a href="">Войти</a></li>
+      <li><a href="">Выйти</a></li>
       <li><a href="">Создать заявку</a></li>
     </ng-container>
   </ul>
