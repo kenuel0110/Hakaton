@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   /* Цвета */
   --primary-color: #21a5b9;
@@ -8,7 +10,7 @@
   --background-color: #fff;
 
   /* Шрифты */
-  --font-primary: "Roboto", "Arial", sans-serif;
+  --font-primary: "Jost", 'Verdana', sans-serif;
   --text-primary-size: 1rem; /* 16px */
   --text-secondary-size: 0.875rem; /* 14px */
   --text-title-size: 1.75rem; /* 28px */
@@ -28,17 +30,17 @@
 
   --margin-large: 1.5rem; /* 24px */
   --margin-normal: 0.75rem; /* 12px */
-  --margin-medium: 0.50rem; /* 4px */
-  --margin-small: 0.250rem; /* 4px */
+  --margin-medium: 0.5rem; /* 4px */
+  --margin-small: 0.25rem; /* 4px */
 
   /* Внутрение отступы */
   --button-padding-normal: 0.75rem; /* 12px */
   --button-padding-small: 0.75rem; /* 12px */
-  --input-padding-normal: 0.250rem; /* 4px */
+  --input-padding-normal: 0.25rem; /* 4px */
 
   --padding-large: 1.5rem; /* 24px */
   --padding-normal: 0.75rem; /* 12px */
-  --padding-small: 0.250rem; /* 4px */
+  --padding-small: 0.25rem; /* 4px */
 
   /* Закругления */
   --input-corner-min: 0.125rem; /* 2px */
@@ -51,13 +53,26 @@
   --input-width-max: 70.9375rem; /* 1135px */
 }
 
-::-webkit-scrollbar{width:16px;height:16px !important}
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px !important;
+}
 ::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment {height:0px;display:block;background-color:transparent !important}
-::-webkit-scrollbar-track-piece {background-color:var(--accent-color) !important}
-::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#c1c3c7; border:2px solid #c1c3c7 !important}
+::-webkit-scrollbar-button:end:increment {
+  height: 0px;
+  display: block;
+  background-color: transparent !important;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: var(--accent-color) !important;
+}
+::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #c1c3c7;
+  border: 2px solid #c1c3c7 !important;
+}
 
-body{
+body {
   background-color: var(--background-color);
   font-family: var(--font-primary);
   color: var(--primary-text-color);
@@ -65,19 +80,21 @@ body{
   padding: 0;
 }
 
-h1{
-  font-family: var(--font-primary);
+h1 {
+  font-family: var(--gilroy-extrabold);
   font-size: var(--text-title-size);
   color: var(--primary-text-color);
+  font-weight: 800;
 }
 
-h2{
-  font-family: var(--font-primary);
+h2 {
+  font-family: var(--gilroy-extrabold);
   font-size: var(--text-primary-size);
   color: var(--primary-text-color);
+  font-weight: 800;
 }
 
-header{
+header {
   background-color: var(--accent-color);
   padding: var(--padding-large);
   align-items: left;
@@ -88,11 +105,11 @@ header{
 
 /*Поля ввода*/
 
-input:focus{
+input:focus {
   border: var(--border-active);
 }
 
-input{
+input {
   outline: none;
   padding: var(--input-padding-normal);
   min-width: var(--input-width-normal);
@@ -138,13 +155,13 @@ button {
   border-radius: var(--button-corner-min);
 }
 
-.button-accent:hover{
+.button-accent:hover {
   background-color: #1e94a6;
   color: var(--secondary-color);
   border: var(--border-accent-hover);
 }
 
-.button-accent:focus{
+.button-accent:focus {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: var(--border-accent-active);
@@ -156,7 +173,7 @@ button {
   border: var(--border-accent-active);
 }
 
-.button-accent{
+.button-accent {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: var(--border-accent-normal);
@@ -197,8 +214,8 @@ button {
 }
 
 .notification {
-  background-color: #333;
-  color: #fff;
+  background-color: #fff;
+  color: #333;
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -206,15 +223,21 @@ button {
 }
 
 @keyframes fadeInOut {
-  0%, 100% { opacity: 0; }
-  10%, 90% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
 }
 
 /* Navbar */
 
 nav {
   background-color: #333;
-  padding: 3%;
+  padding: 1% 0 1% 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -244,7 +267,7 @@ nav {
 }
 
 .logo--img {
-  width: 80%;
+  width: 65%;
   margin-left: 15%;
   /*height: 40px;*/
 }
