@@ -1,43 +1,32 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="create-new">
-    <div class="btn-back-placeholder">
-      <button (click)="goToPage()">
-        <div class="btn-div">
-          <div class="icon-placeholder-button">
-            <img class="ic_backward" src="assets/icons/ic_back.svg" onerror="this.src='assets/placeholders/ic_broken_icon.svg'" alt="Иконка кнопки назад">
-          </div>
+<div style="margin: 24px;">
+<div class="rooms-container">
+  <div *ngFor="let room of rooms" class="room-preview">
+    <div class="room" style="background-color: #333333;">
+      <!-- Изображение сверху -->
+      <div class="room__image">
+        <img
+          src="{{room.image}}"
+          alt="room image">
+      </div>
+      <!-- Информация снизу в серой области -->
+      <div class="room-info">
+        <div class="room__header">
           <div>
-            <span>Назад</span>
+            <h3 class="room__title">{{room.title}}</h3>
+          </div>
+          <div class="room__people">
+            <img class="room__people-icon"
+              src="https://cdn-eu.icons8.com/docs/BnLkG_fXdU2Nx4K7hcUflQ/NjHc6hgmsUOrLWb_4VnqiQ.svg"
+              alt="user icon">
+            <div class="room__maxpeople">{{room.max_count}}</div>
           </div>
         </div>
-      </button>
-    </div>
-    <div class="div-title">
-      <label for="cityTitle">Название города</label>
-      <input type="text" formControlName="cityTitle" required>
-      <div class="error-div" *ngIf="form.get('cityTitle')?.invalid && form.get('cityTitle')?.touched">
-        *Заполните поле
+        <button class="room__btn" (click)="goToRoom(room)">Выбрать</button>
       </div>
-    </div>
-    <div class="div-description">
-      <label for="cityDescription">Описание города</label>
-      <textarea formControlName="cityDescription" required></textarea>
-      <div class="error-div" *ngIf="form.get('cityDescription')?.invalid && form.get('cityDescription')?.touched">
-        *Заполните поле
-      </div>
-    </div>
-    <div class="div-link">
-      <label for="cityLink">Ссылка на картинку</label>
-      <input type="text" formControlName="cityLink" required>
-      <div class="error-div" *ngIf="form.get('cityLink')?.invalid && form.get('cityLink')?.touched">
-        *Заполните поле
-      </div>
-    </div>
-    <div class="btn_div-submit">
-      <button class="button-accent" type="submit">Создать</button>
-    </div>
-    <div *ngIf="isLoading" class="loading-spinner create-new__loading-spinner">
-      <div class="spinner"></div>
     </div>
   </div>
-</form>
+  <div *ngIf="isLoading" class="loading-spinner create-new__loading-spinner">
+    <div class="spinner"></div>
+  </div>
+</div>
+</div>

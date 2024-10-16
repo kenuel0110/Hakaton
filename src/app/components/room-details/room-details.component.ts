@@ -16,10 +16,10 @@ import {FirebaseService} from "../../services/firebase.service";
 export class RoomDetailsComponent implements OnInit {
   request: Request | undefined;
 
-  constructor(private route: ActivatedRoute, private firestore: FirebaseService, private requestService: RequestService, private http: HttpClient, private fb: FormBuilder, private router: Router) {
+  constructor(private route: ActivatedRoute, private firestore: FirebaseService, private requestService: RequestService, private fb: FormBuilder, private router: Router) {
     this.route.paramMap.subscribe(params => {
       const requestId = parseInt(params.get('id') || '', 10);
-      //this.request = this.requestService.getRequestById(requestId);
+      this.request = this.requestService.getRequestById(requestId);
     });
   }
 
