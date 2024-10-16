@@ -1,11 +1,7 @@
 <div class="room__details">
 
   <div class="room__3d">
-    <iframe title="Studio apartment (vray baked textures included)" frameborder="0" allowfullscreen
-      mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
-      xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
-      src="https://sketchfab.com/models/cae2d96ede1d4112b1fd391099a43f77/embed">;
-    </iframe>
+    <div style="width: 100%; height: 100%; border-radius: 14px; overflow: hidden;" [innerHTML]="arModelHtml"></div> 
   </div>
 
   <form (ngSubmit)="onSubmit()" class="room__info">

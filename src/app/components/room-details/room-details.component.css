@@ -6,20 +6,21 @@
 }
 
 .room__3d {
-  width: 40%;
-  height: 100%;
+  width: 40%; /* или 500px, если хотите фиксированный размер */
+  height: 500px; /* фиксированная высота */
   margin: 5%;
   margin-bottom: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative; /* Для абсолютного позиционирования iframe */
 }
 
 .room__3d iframe {
-  width: 100%;
-  height: 35vw;
-  border-radius: 5px;
+  position: absolute; /* Позволяет iframe занимать всю площадь родительского div */
+  top: 0;
+  left: 0;
+  width: 100%; /* Занимает 100% ширины родителя */
+  height: 100%; /* Занимает 100% высоты родителя */
+  border: none; /* Убираем рамку */
+  border-radius: 5px; /* Радиус углов */
 }
 
 .room__info {
