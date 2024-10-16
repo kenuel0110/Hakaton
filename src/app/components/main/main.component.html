@@ -8,7 +8,8 @@
     </button>
   </div>
   <div class="main__sort">
-    <img class="sort__back" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
+    <img class="sort__back"
+      src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
 
     <div class="sort__categories">
       <div class="categories__item categories__all">Все</div>
@@ -18,7 +19,8 @@
       <div class="categories__item">Категория 4</div>
       <div class="categories__item">Категория 5</div>
     </div>
-    <img class="sort__next" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
+    <img class="sort__next"
+      src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
   </div>
   <div class="recycleviews-cities">
     <div *ngIf="isLoading" class="loading-spinner">
@@ -28,15 +30,33 @@
       <div *ngSwitchCase="'grid'" class="recycleview-grid">
         <div class="rooms-container">
           <div *ngFor="let room of rooms" class="room-preview">
-            <div class="room-info">
-              <h3>{{ room.title }}</h3>
-              <p>Максимальное количество человек: {{ room.max_count }}</p>
-              <button (click)="goToRoom(room.id)">Подробнее</button>
+            <div class="room">
+              <!-- Изображение сверху -->
+              <div class="room__image">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7Gfzj8S4D1AbL1Kq08dntQgV-pgKmnLn2yA&s"
+                  alt="room image">
+              </div>
+
+              <!-- Информация снизу в серой области -->
+              <div class="room-info">
+                <div class="room__header">
+                  <div>
+                    <h3 class="room__title">Название мероприятия</h3>
+                    <div class="room__company">ООО "ААА"</div>
+                  </div>
+                  <div class="room__people">
+                    <img class="room__people-icon"
+                      src="https://cdn-eu.icons8.com/docs/BnLkG_fXdU2Nx4K7hcUflQ/NjHc6hgmsUOrLWb_4VnqiQ.svg"
+                      alt="user icon">
+                    <div class="room__maxpeople">{{room.max_count}}</div>
+                  </div>
+                </div>
+                <div class="room__description">Описание</div>
+                <div class="room__date">12.10.22 - 12.10.22</div>
+                <button class="room__btn" (click)="goToRoom(room.id)">Большой зал</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-</div>

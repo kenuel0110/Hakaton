@@ -5,7 +5,6 @@
   padding: var(--margin-normal) var(--margin-large);
   gap: 0px;
   align-items: center;
-  background-color: #191919;
 }
 
 .main__btns {
@@ -120,7 +119,7 @@
 
 /*grid-item*/
 
-.recycleview-grid {
+/* .recycleview-grid {
   display: flex;
   flex-wrap: wrap;
   align-items: left;
@@ -135,9 +134,9 @@
   padding: 8px;
   min-width: 18.75em;
   max-width: 20em;
-}
+} */
 
-@media (max-width: 689px) {
+/* @media (max-width: 689px) {
   .recycleview-grid {
     display: flex;
     flex-direction: column;
@@ -153,7 +152,7 @@
     min-width: 18.75em;
     max-width: 20em;
   }
-}
+} */
 
 .grid-item {
   display: flex;
@@ -297,15 +296,177 @@
   height: 16px;
 }
 
-.room-preview {
+/* .room-preview {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+}
+
+.room__image {
 }
 
 .room-info {
-  background-image: url(/public/assets/imgs/placeholder.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 0 0 8px 8px;
+  background: #333333;
+  padding: 5%;
+  background-image: url('https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/a4fe10e608b9b4a32b2927f2815530d0004b1392.jpg');
+}
+
+.room {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0 0 5px 5px;
+}
+
+.room__header {
+  display: flex;
+  width: 96%;
+  color: #ffffff;
+  justify-content: space-between;
+}
+
+.room__title {
+}
+
+.room__company {
+}
+
+.room__people {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.room__people-icon {
+}
+
+.room__maxpeople {
+}
+
+.room__description {
+  color: #757575;
+  width: 80%;
+  margin: 5% auto 0 auto;
+  text-align: center;
+}
+
+ */
+
+.rooms-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 1%;
+}
+
+.room-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.room__image img {
+  width: 100%;
+  height: auto;
+}
+
+.room-info {
+  background-color: #333;
+  color: #fff;
+  padding: 5%;
+  width: 100%;
+  padding-top: 0;
+}
+
+.room__header {
+  display: flex;
+  width: 96%;
+  color: #ffffff;
+  justify-content: space-between;
+}
+
+.room__title {
+  font-size: 1.3vw;
+  font-weight: bold;
+  width: 70%;
+  margin-left: 7%;
+  margin-bottom: 0;
+}
+
+.room__company {
+  font-size: 1.2vw;
+  width: 50%;
+  color: #aaa;
+  margin-left: 7%;
+}
+
+.room__people {
+  display: flex;
+  align-items: center;
+}
+
+.room__people-icon {
+  width: 24px;
+  margin-right: 8px;
+}
+
+.room__maxpeople {
+  font-size: 1.2vw;
+  color: #aaa;
+}
+
+.room__description {
+  margin-top: 8px;
+  font-size: 1.2vw;
+  color: #ccc;
+  display: flex;
+  justify-content: center;
+}
+
+.room__date {
+  border-radius: 8px;
+  color: #757575;
+  background: #232323;
+  width: 80%;
+  margin: 5% auto 0 auto;
+  text-align: center;
+  font-size: 1.2vw;
+}
+
+.room__btn {
+  border-radius: 8px;
+  color: #757575;
+  border-color: #191919;
+  background: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 5% auto 0 auto;
+  padding: 0;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: 1.2vw;
+}
+
+.room__btn:hover {
+  background-color: #777;
+  color: #191919;
 }
