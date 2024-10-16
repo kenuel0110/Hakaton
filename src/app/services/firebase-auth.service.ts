@@ -80,6 +80,19 @@ export class FirebaseAuthService {
     });
   }
 
+  getUserDataById(): Promise<any> {
+    return new Promise((resolve) => {
+      onAuthStateChanged(this.auth, async (user) => {
+        if (user) {
+          const userData = await this.getUserData(user.uid);
+          resolve(userData);
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  }
+
   private async getUserData(uid: string): Promise<User> {
     const userData = await this.firebaseService.getData(`users/${uid}`);
     return userData as User;
