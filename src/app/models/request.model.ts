@@ -1,22 +1,5 @@
+import { Injectable } from '@angular/core';
 export interface Request {
-<<<<<<< HEAD
-    id: number;
-    owner: string;
-    title: string;
-    description: string;
-    special_quest: string;
-    equipment: string;
-    owner_equipment: string;
-    comments: string;
-    start_arenda: string;
-    end_arenda: string;
-    fullname: string;
-    post: string;
-    tel: string;
-    id_room: number;
-    status: string;
-}
-=======
   id: number;
   title: string;
   description: string;
@@ -90,4 +73,3 @@ export class RequestService {
         return this.requests.find(request => request.id === id);
       }
 }
->>>>>>> 4cbfe799db639e1cab93fe5dd5974f4f68cd9433

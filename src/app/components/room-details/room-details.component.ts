@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {RequestModel} from "../../models/RequestModel.model";
+import {RequestService} from "../../models/request.model";
 import {FirebaseService} from "../../services/firebase.service";
 
 @Component({
@@ -15,11 +16,7 @@ import {FirebaseService} from "../../services/firebase.service";
 export class RoomDetailsComponent implements OnInit {
   request: Request | undefined;
 
-<<<<<<< HEAD
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
-=======
   constructor(private route: ActivatedRoute, private firestore: FirebaseService, private requestService: RequestService, private http: HttpClient, private fb: FormBuilder, private router: Router) {
->>>>>>> 4cbfe799db639e1cab93fe5dd5974f4f68cd9433
     this.route.paramMap.subscribe(params => {
       const requestId = parseInt(params.get('id') || '', 10);
       //this.request = this.requestService.getRequestById(requestId);
@@ -62,7 +59,7 @@ export class RoomDetailsComponent implements OnInit {
       const url = 'https://sobirator.energy-rust.ru/Notification/notification';
 
       // Отправка POST запроса
-      this.http.post(url, requestModel).subscribe({
+      /*this.http.post(url, requestModel).subscribe({
         next: (response) => {
           console.log('Успешный ответ от сервера:', response);
           // Добавление в Firebase
@@ -82,7 +79,7 @@ export class RoomDetailsComponent implements OnInit {
           console.error('Ошибка при отправке данных:', error);
           // Обработка ошибок
         }
-      });
+      });*/
     } else {
       console.log('Форма не валидна');
     }

@@ -48,9 +48,11 @@ export class MainComponent implements OnInit {
       }
     } catch (error) {
       console.error('Error getting categories:', error);
+    } finally {
+      this.isLoading = false;
     }
   }
-
+  
   async getRequests(): Promise<void> {
     try {
       const requests = await this.firebaseService.getData('/request');
@@ -61,13 +63,11 @@ export class MainComponent implements OnInit {
       }
     } catch (error) {
       console.error('Error getting requests:', error);
+    } finally {
+      this.isLoading = false;
     }
   }
-
-  isSelectedCategory(category: any): boolean {
-    return this.selectedCategory === category;
-  }
-
+  
   async getRooms(): Promise<void> {
     try {
       const rooms = await this.firebaseService.getData('/room');
@@ -78,7 +78,13 @@ export class MainComponent implements OnInit {
       }
     } catch (error) {
       console.error('Error getting rooms:', error);
+    } finally {
+      this.isLoading = false;
     }
+  }
+
+  isSelectedCategory(category: any): boolean {
+    return this.selectedCategory === category;
   }
 
   isAllSelected(): boolean {
