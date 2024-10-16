@@ -4,59 +4,95 @@
     <div style="width: 100%; height: 100%; border-radius: 14px; overflow: hidden;" [innerHTML]="arModelHtml"></div> 
   </div>
 
-  <form (ngSubmit)="onSubmit()" class="room__info">
-    <div class="form-group">
-      <label for="owner">Название организации:</label>
-      <input type="text" id="owner" formControlName="owner">
-    </div>
+  <form (ngSubmit)="onSubmit()" class="room__info" [formGroup]="form">
     <div class="form-group">
       <label for="title">Название мероприятия:</label>
       <input type="text" id="title" formControlName="title">
+      <div style="color: brown;" *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="error">
+        Название мероприятия обязательно.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="description">Описание мероприятия:</label>
       <textarea id="description" formControlName="description"></textarea>
+      <div style="color: brown;" *ngIf="form.get('description')?.invalid && form.get('description')?.touched" class="error">
+        Описание обязательно.
+      </div>
     </div>
+
+    <div class="form-group">
+      <label for="count_people">Планируемое кол-во человек:</label>
+      <input type="number" id="count_people" formControlName="count_people">
+      <div style="color: brown;" *ngIf="form.get('count_people')?.invalid && form.get('count_people')?.touched" class="error">
+        Укажите количество людей.
+      </div>
+      <div style="color: brown;" *ngIf="countPeopleError" class="error">
+        Планируемое количество человек не может превышать {{ roomData?.max_count }}.
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="special_quest">Особые требования:</label>
       <textarea id="special_quest" formControlName="special_quest"></textarea>
+      <div style="color: brown;" *ngIf="form.get('special_quest')?.invalid && form.get('special_quest')?.touched" class="error">
+        Особые требования обязательны.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="equipment">Оборудование:</label>
       <textarea id="equipment" formControlName="equipment"></textarea>
+      <div style="color: brown;" *ngIf="form.get('equipment')?.invalid && form.get('equipment')?.touched" class="error">
+        Оборудование обязательно.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="owner_equipment">Оборудование компании:</label>
       <textarea id="owner_equipment" formControlName="owner_equipment"></textarea>
+      <div style="color: brown;" *ngIf="form.get('owner_equipment')?.invalid && form.get('owner_equipment')?.touched" class="error">
+        Оборудование компании обязательно.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="comments">Комментарии:</label>
       <textarea id="comments" formControlName="comments"></textarea>
+      <div style="color: brown;" *ngIf="form.get('comments')?.invalid && form.get('comments')?.touched" class="error">
+        Комментарии обязательны.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="start_arenda">Начало аренды:</label>
       <input type="date" id="start_arenda" formControlName="start_arenda">
+      <div style="color: brown;" *ngIf="form.get('start_arenda')?.invalid && form.get('start_arenda')?.touched" class="error">
+        Дата начала аренды обязательна.
+      </div>
     </div>
+
     <div class="form-group">
       <label for="end_arenda">Окончание аренды:</label>
       <input type="date" id="end_arenda" formControlName="end_arenda">
+      <div style="color: brown;" *ngIf="form.get('end_arenda')?.invalid && form.get('end_arenda')?.touched" class="error">
+        Дата окончания аренды обязательна.
+      </div>
+      <div style="color: brown;" *ngIf="dateError" class="error">
+        Дата окончания не может быть раньше даты начала.
+      </div>
     </div>
-    <div class="form-group">
-      <label for="fullname">Полное имя:</label>
-      <input type="text" id="fullname" formControlName="fullname">
-    </div>
+
     <div class="form-group">
       <label for="post">Должность:</label>
       <input type="text" id="post" formControlName="post">
+      <div style="color: brown;" *ngIf="form.get('post')?.invalid && form.get('post')?.touched" class="error">
+        Должность обязательна.
+      </div>
     </div>
-    <div class="form-group">
-      <label for="tel">Телефон:</label>
-      <input type="tel" id="tel" formControlName="tel">
-    </div>
+
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary">Отправить заявку</button>
+    <button type="button" class="btn btn-secondary" (click)="goBackPage()">Вернуться назад</button>
   </form>
-
-  <button class="back-button" (click)="goBackPage()">Назад</button>
-
-  <button type="submit" class="submit-button" (click)="onSubmit()">Отправить</button>
 
 </div>
