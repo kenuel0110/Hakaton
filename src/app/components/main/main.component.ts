@@ -5,9 +5,10 @@ import { Component } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { User } from '../../models/user.model';
+import { Room } from '../../models/roomnew.model';
+import { Request } from '../../models/request.model';
 import { NotificationService } from '../../services/notification.service';
-import { RoomService, Room } from '../../services/room.service';
+import { RoomService} from '../../services/room.service';
 
 @Component({
   selector: 'app-main',
@@ -18,59 +19,90 @@ import { RoomService, Room } from '../../services/room.service';
 })
 
 export class MainComponent implements OnInit {
+  categories: any[] = [];
+  requests: Request[] = [];
   rooms: Room[] = [];
-
   selectedButton: string = 'grid';
   isLoading: boolean = true;
 
-  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router, private roomService: RoomService) {
-    this.rooms = roomService.getRooms();
-  }
+  elements: Request[] = []; // массив элементов
+  selectedCategory: any = null; // текущая выбранная категория
 
-  // Метод для перехода на страницу с информацией о комнате
-  goToRoom(roomId: number) {
-    this.router.navigate(['/main', roomId]);
+  constructor(private firebaseService: FirebaseService, private notificationService: NotificationService, private router: Router, private roomService: RoomService) {
+    
   }
 
   ngOnInit(): void {
-    this.loadCities();
+    this.getCategories();
+    this.getRequests();
+    this.getRooms();
   }
 
-  async loadCities() {
+  async getCategories(): Promise<void> {
     try {
-      const data = await this.firebaseService.getData('cities');
-      if (data) {
-        //this.cities = data;
+      const categories = await this.firebaseService.getData('/category');
+      if (categories) {
+        this.categories = Object.keys(categories).map((key) => categories[key]);
       } else {
-        console.log("Данные не найдены");
-        this.notificationService.showNotification("Данные не найдены");
+        console.log('No categories available');
       }
-    } catch (error: any) {
-      console.error(error);
-      this.notificationService.showNotification(error);
-    } finally {
-      this.isLoading = false;
+    } catch (error) {
+      console.error('Error getting categories:', error);
     }
-
   }
 
-  selectButton(button: string) {
-    this.selectedButton = button;
+  async getRequests(): Promise<void> {
+    try {
+      const requests = await this.firebaseService.getData('/request');
+      if (requests) {
+        this.requests = requests;
+      } else {
+        console.log('No requests available');
+      }
+    } catch (error) {
+      console.error('Error getting requests:', error);
+    }
   }
 
-  async toggleFavorite(city: Event) {
-    //city.favorite = !city.favorite;
-    //if (city.id != undefined) {
-    //  try {
-    //    await this.firebaseService.update(`cities/${city.id}`, { favorite: city.favorite });
-    //  } catch (error) {
-    //    console.error("Ошибка при обновлении избранного:", error);
-    //    city.favorite = !city.favorite;
-    //  }
-    //}
+  isSelectedCategory(category: any): boolean {
+    return this.selectedCategory === category;
   }
 
-  goToPage(): void {
-    this.router.navigate(['/new']);
+  async getRooms(): Promise<void> {
+    try {
+      const rooms = await this.firebaseService.getData('/room');
+      if (rooms) {
+        this.rooms = rooms;
+      } else {
+        console.log('No rooms available');
+      }
+    } catch (error) {
+      console.error('Error getting rooms:', error);
+    }
+  }
+
+  isAllSelected(): boolean {
+    return this.selectedCategory === null;
+  }
+
+
+
+  selectCategory(category: string | null): void {
+    this.selectedCategory = category;
+  }
+
+  isRequestVisible(request: Request): boolean {
+    if (this.selectedCategory === null) {
+      // Show all approved requests
+      return request.status === 'approved';
+    } else {
+      // Filter by room tag
+      const room = this.rooms.find((room) => room.id === request.id_room);
+      if (room) {
+        return room.tag === this.selectedCategory.title;
+      } else {
+        return false;
+      }
+    }
   }
 }

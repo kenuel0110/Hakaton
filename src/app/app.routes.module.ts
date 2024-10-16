@@ -31,7 +31,7 @@ export const routes: Routes = [
   },
   {
     path: 'choose-room',
-    component: AuthComponent,
+    component: RoomDetailsComponent,
     data: { title: 'Выбор зала' }
   },
   {

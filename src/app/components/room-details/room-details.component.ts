@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RequestService, Request } from '../../models/request.model';
+import { Request } from '../../models/request.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 export class RoomDetailsComponent implements OnInit {
   request: Request | undefined;
 
-  constructor(private route: ActivatedRoute, private requestService: RequestService, private fb: FormBuilder, private router: Router) {
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router) {
     this.route.paramMap.subscribe(params => {
       const requestId = parseInt(params.get('id') || '', 10);
-      this.request = this.requestService.getRequestById(requestId);
+      //this.request = this.requestService.getRequestById(requestId);
     });
   }
 

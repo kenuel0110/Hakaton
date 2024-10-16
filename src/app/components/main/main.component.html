@@ -11,13 +11,10 @@
     <img class="sort__back" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
 
     <div class="sort__categories">
-      <div class="categories__item categories__all">Все</div>
-      <div class="categories__item">Категория 1</div>
-      <div class="categories__item">Категория 2</div>
-      <div class="categories__item">Категория 3</div>
-      <div class="categories__item">Категория 4</div>
-      <div class="categories__item">Категория 5</div>
+      <div class="categories__item categories__all" [class.active]="isAllSelected()" (click)="selectCategory(null)">Все</div>
+      <div *ngFor="let category of categories" class="categories__item" [class.active]="isSelectedCategory(category)" (click)="selectCategory(category)">{{ category.title }}</div>
     </div>
+
     <img class="sort__next" src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
   </div>
   <div class="recycleviews-cities">
@@ -27,13 +24,20 @@
     <div *ngIf="!isLoading" [ngSwitch]="selectedButton">
       <div *ngSwitchCase="'grid'" class="recycleview-grid">
         <div class="rooms-container">
-          <div *ngFor="let room of rooms" class="room-preview">
+          <div *ngFor="let request of requests">
+            <div *ngIf="isRequestVisible(request)">
+              <h3>{{ request.title }}</h3>
+              <p>{{ request.description }}</p>
+              <!-- Добавьте другие поля, которые хотите отобразить -->
+            </div>
+          </div>
+          <!--<div *ngFor="let room of rooms" class="room-preview">
             <div class="room-info">
               <h3>{{ room.title }}</h3>
               <p>Максимальное количество человек: {{ room.max_count }}</p>
               <button (click)="goToRoom(room.id)">Подробнее</button>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
