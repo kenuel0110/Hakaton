@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirebaseService } from "../../services/firebase.service";
+import { NotificationService } from '../../services/notification.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Room } from "../../models/roomnew.model";
 
@@ -19,7 +20,7 @@ export class RoomDetailsComponent implements OnInit {
   roomId: number | undefined;
   roomData: Room | undefined;
   arModelHtml: any; // Для хранения HTML-кода
-  form!: FormGroup;
+  form: FormGroup  = new FormGroup({});
   countPeopleError: boolean = false;
   dateError: boolean = false;
 
@@ -28,7 +29,8 @@ export class RoomDetailsComponent implements OnInit {
     private firestore: FirebaseService,
     private fb: FormBuilder,
     private router: Router,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -61,8 +63,6 @@ export class RoomDetailsComponent implements OnInit {
         console.error('Error fetching data:', error);
       });
     });
-
-    // Инициализация формы
   }
 
   onSubmit() {
@@ -75,6 +75,7 @@ export class RoomDetailsComponent implements OnInit {
       // Проверка количества людей
       if (formData.count_people > this.roomData.max_count) {
         this.countPeopleError = true;
+        this.notificationService.showNotification('Ошибка, кол-ва людей');
         return; // Прекращаем выполнение, если ошибка
       }
 
@@ -83,11 +84,15 @@ export class RoomDetailsComponent implements OnInit {
       const endDate = new Date(formData.end_arenda);
       if (startDate > endDate) {
         this.dateError = true;
+        this.notificationService.showNotification('Ошибка, даты');
         return; // Прекращаем выполнение, если ошибка
       }
 
+
+      const id_cripto = crypto.randomUUID()
+
       const requestModel = {
-        id: this.roomData.id,
+        id: id_cripto,
         title: formData.title,
         description: formData.description,
         fullname: '', // Подтяните из БД, если необходимо
@@ -105,17 +110,19 @@ export class RoomDetailsComponent implements OnInit {
       };
 
       // Отправка данных в Firebase
-      this.firestore.writeData(`request/${requestModel.id}`, requestModel)
+      this.firestore.writeData(`request/${id_cripto}`, requestModel)
         .then(() => {
           console.log('Данные успешно добавлены в Firebase');
+          this.notificationService.showNotification('Заявка успешно отправлена');
           this.form.reset();
           this.router.navigate(['/main']);
         })
         .catch((error) => {
+          this.notificationService.showNotification('Ошибка, добавления');
           console.error('Ошибка при добавлении данных в Firebase:', error);
         });
     } else {
-      
+      this.notificationService.showNotification('Ошибка, проверьте данные');
       console.log('Форма не валидна', this.form.errors);
     }
   }

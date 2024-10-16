@@ -57,7 +57,7 @@ export class MainComponent implements OnInit {
     try {
       const requests = await this.firebaseService.getData('/request');
       if (requests) {
-        this.requests = requests;
+        this.requests = Object.keys(requests).map((key) => requests[key]);
       } else {
         console.log('No requests available');
       }
@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
     try {
       const rooms = await this.firebaseService.getData('/room');
       if (rooms) {
-        this.rooms = rooms;
+        this.rooms = Object.keys(rooms).map((key) => rooms[key]);
       } else {
         console.log('No rooms available');
       }
@@ -90,8 +90,6 @@ export class MainComponent implements OnInit {
   isAllSelected(): boolean {
     return this.selectedCategory === null;
   }
-
-
 
   selectCategory(category: string | null): void {
     this.selectedCategory = category;
