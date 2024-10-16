@@ -1,16 +1,7 @@
 <div class="main">
-  <!--<div class="main__btns">
-    <button class="btns__requests">
-      Заявки
-    </button>
-    <button class="btns__events">
-      Мероприятия
-    </button>
-  </div>-->
   <div class="main__sort">
     <img class="sort__back"
       src="https://lcdn-eu.icons8.com/c/BnLkG_fXdU2Nx4K7hcUflQ/368ed378f1d01bfe9d503474184d75f820f8b309.png" alt="">
-
     <div class="sort__categories">
       <div class="categories__item categories__all" [class.active]="isAllSelected()" (click)="selectCategory(null)">Все</div>
       <div *ngFor="let category of categories" class="categories__item" [class.active]="isSelectedCategory(category)" (click)="selectCategory(category)">{{ category.title }}</div>
@@ -24,41 +15,28 @@
     <div *ngIf="!isLoading" [ngSwitch]="selectedButton">
       <div *ngSwitchCase="'grid'" class="recycleview-grid">
         <div class="rooms-container">
-          
-          <div *ngFor="let request of requests"  class="room-preview">
-            <div class="room" *ngIf="isRequestVisible(request)">
-              <!-- Изображение сверху 
-              <div class="room__image">
-                <img
-                  src="{{request.}}"
-                  alt="room image">
-              </div>
--->
-              <!-- Информация снизу в серой области -->
-              <div class="room-info">
-                <div class="room__header">
-                  <div>
-                    <h3 class="room__title">{{request.title}}</h3>
-                    <div class="room__company">{{request.owner}}</div>
+          <ng-container *ngFor="let request of requests">
+            <div *ngIf="isRequestVisible(request)" class="room-preview">
+              <div class="room">
+                <div class="room-info">
+                  <div class="room__header">
+                    <div>
+                      <h3 class="room__title">{{request.title}}</h3>
+                      <div class="room__company">{{request.owner}}</div>
+                    </div>
+                    <div class="room__people">
+                      <img class="room__people-icon"
+                        src="https://cdn-eu.icons8.com/docs/BnLkG_fXdU2Nx4K7hcUflQ/NjHc6hgmsUOrLWb_4VnqiQ.svg"
+                        alt="user icon">
+                      <div class="room__maxpeople">{{request.count_people}}</div>
+                    </div>
                   </div>
-                  <div class="room__people">
-                    <img class="room__people-icon"
-                      src="https://cdn-eu.icons8.com/docs/BnLkG_fXdU2Nx4K7hcUflQ/NjHc6hgmsUOrLWb_4VnqiQ.svg"
-                      alt="user icon">
-                    <div class="room__maxpeople">{{request.count_people}}</div>
-                  </div>
+                  <div class="room__description">{{request.description}}</div>
+                  <div class="room__date">{{request.start_date}} - {{request.end_date}}</div>
+                  <div class="room__btn">{{request.id_room}}</div>
                 </div>
-                <div class="room__description">{{request.description}}</div>
-                <div class="room__date">{{request.start_date}} - {{request.end_date}}</div>
-                <div class="room__btn">{{request.id_room}}</div>
               </div>
-          </div>
-          <!--<div *ngFor="let room of rooms" class="room-preview">
-            <div class="room-info">
-              <h3>{{ room.title }}</h3>
-              <p>Максимальное количество человек: {{ room.max_count }}</p>
-              <button (click)="goToRoom(room.id)">Подробнее</button>
             </div>
-          </div>-->
+          </ng-container>
         </div>
       </div>
