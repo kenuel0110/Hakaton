@@ -87,6 +87,11 @@ export class MainComponent implements OnInit {
     return this.selectedCategory === category;
   }
 
+  getRoomTitle(id_room: number): string {
+    const room = this.rooms.find((room) => room.id === id_room);
+    return room ? room.title : 'Комната не найдена';
+  }
+
   isAllSelected(): boolean {
     return this.selectedCategory === null;
   }
