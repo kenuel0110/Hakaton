@@ -12,6 +12,16 @@
   align-items: center;
 }
 
+.categories__item {
+  cursor: pointer; /* Курсор указателя для интерактивных элементов */
+  padding: 10px; /* Добавьте отступы для лучшего восприятия */
+}
+
+.categories__item.active {
+  background-color: #181818; /* Цвет фона для активного состояния */
+  color: white; /* Цвет текста, если необходимо */
+}
+
 .btns__requests,
 .btns__events {
   width: 10%;
@@ -357,116 +367,118 @@
 
  */
 
-.rooms-container {
+ .rooms-container {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 100%;
-  gap: 1%;
+  justify-content: flex-start; /* Выравнивание по левому краю */
+  gap: 20px; /* Промежутки между карточками */
 }
 
-.room-preview {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2%;
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #eeeeee00;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	background-color: #eeeeee00;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #eeeeee00;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #eeeeee00;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
 }
 
 .room {
+  flex: 0 0 300px; /* Фиксированная ширина карточки */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 8px;
+
+  background-color: #333333;
+  border-radius: 12px;
   overflow: hidden;
-  width: 100%;
-}
-
-.room__image img {
-  width: 100%;
-  height: auto;
-}
-
-.room-info {
-  background-color: #333;
-  color: #fff;
-  padding: 5%;
-  width: 100%;
-  padding-top: 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  height: 350px; /* Фиксированная высота карточки */
 }
 
 .room__header {
   display: flex;
-  width: 96%;
-  color: #ffffff;
-  justify-content: space-between;
+  justify-content: space-between; /* Расположение заголовка и компании */
+  align-items: center; /* Выравнивание по центру */
+  width: 100%; /* Ширина заголовка */
 }
 
 .room__title {
-  font-size: 1.3vw;
-  font-weight: bold;
-  width: 70%;
-  margin-left: 7%;
-  margin-bottom: 0;
+  font-weight: bold; /* Жирный шрифт */
+  margin: 0; /* Убираем отступы */
+  color: #fff;
 }
 
 .room__company {
-  font-size: 1.2vw;
-  width: 50%;
-  color: #aaa;
-  margin-left: 7%;
+  color: #4c4d4e; /* Цвет текста компании */
 }
 
 .room__people {
   display: flex;
-  align-items: center;
+  align-items: center; /* Выравнивание по центру */
+  color: #4c4d4e;
 }
 
 .room__people-icon {
-  width: 24px;
-  margin-right: 8px;
-}
-
-.room__maxpeople {
-  font-size: 1.2vw;
-  color: #aaa;
+  width: 24px; /* Ширина иконки */
+  margin-right: 8px; /* Отступ справа */
 }
 
 .room__description {
-  margin-top: 8px;
-  font-size: 1.2vw;
-  color: #ccc;
-  display: flex;
-  justify-content: center;
+  margin-top: 10px; /* Отступ сверху */
+  font-size: 12px; /* Размер описания */
+  text-align: center; /* Центрирование текста */
+  color: #4c4d4e;
 }
 
 .room__date {
-  border-radius: 8px;
-  color: #757575;
-  background: #232323;
-  width: 80%;
-  margin: 5% auto 0 auto;
-  text-align: center;
-  font-size: 1.2vw;
+  border-radius: 8px; /* Закругление углов */
+  color: #757575; /* Цвет текста */
+  background: #232323; /* Цвет фона */
+  padding: 5px; /* Отступы */
+  width: 80%; /* Ширина блока даты */
+  margin: 5% auto; /* Центрирование */
+  text-align: center; /* Центрирование текста */
+
 }
 
 .room__btn {
-  border-radius: 8px;
-  color: #757575;
-  border-color: #191919;
-  background: #191919;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  margin: 5% auto 0 auto;
-  padding: 0;
-  cursor: pointer;
-  transition: 0.5s;
-  font-size: 1.2vw;
+  border-radius: 8px; /* Закругление углов */
+  color: #fff;
+  border: 1px solid #191919; /* Цвет границы */
+  background: #191919; /* Цвет фона */
+  display: flex; /* Flexbox для выравнивания */
+  justify-content: center; /* Центрирование */
+  align-items: center; /* Центрирование */
+  width: 80%; /* Ширина кнопки */
+  margin: 5% auto; /* Центрирование */
+  padding: 10px; /* Отступы */
+  cursor: pointer; /* Курсор указателя */
+  transition: background-color 0.3s; /* Плавный переход цвета фона */
 }
 
 .room__btn:hover {
-  background-color: #777;
-  color: #191919;
+  background-color: #777; /* Цвет фона при наведении */
+  color: #191919; /* Цвет текста при наведении */
 }
